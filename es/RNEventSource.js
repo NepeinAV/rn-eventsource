@@ -278,12 +278,6 @@ var RNEventSource = /** @class */ (function (_super) {
     };
     RNEventSource.prototype.__dispatchBufferedEvent = function () {
         this._lastEventId = this._lastEventIdBuf;
-        // If the data buffer is an empty string, set the event type buffer to
-        // empty string and return
-        if (this._dataBuf === '') {
-            this._eventTypeBuf = '';
-            return;
-        }
         // Dispatch the event
         var eventType = this._eventTypeBuf || EventSourceEvent.MESSAGE;
         this.dispatchEvent({
