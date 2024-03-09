@@ -354,13 +354,6 @@ class RNEventSource extends (EventTarget(EVENT_SOURCE_EVENTS)) implements Extend
     private __dispatchBufferedEvent() {
         this._lastEventId = this._lastEventIdBuf;
 
-        // If the data buffer is an empty string, set the event type buffer to
-        // empty string and return
-        if (this._dataBuf === '') {
-            this._eventTypeBuf = '';
-            return;
-        }
-
         // Dispatch the event
         const eventType = this._eventTypeBuf || EventSourceEvent.MESSAGE;
         this.dispatchEvent({

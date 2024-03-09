@@ -279,12 +279,6 @@ define(["require", "exports", "react-native", "event-target-shim", "./types"], f
         };
         RNEventSource.prototype.__dispatchBufferedEvent = function () {
             this._lastEventId = this._lastEventIdBuf;
-            // If the data buffer is an empty string, set the event type buffer to
-            // empty string and return
-            if (this._dataBuf === '') {
-                this._eventTypeBuf = '';
-                return;
-            }
             // Dispatch the event
             var eventType = this._eventTypeBuf || types_1.EventSourceEvent.MESSAGE;
             this.dispatchEvent({
